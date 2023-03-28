@@ -1,45 +1,44 @@
-const wrapper =  document.querySelector(".wrapper");
-const form = document.querySelector(".form");
+const wrapper = document.querySelector(".wrapper");
+const form = document.querySelector("form");
 const fileInp = document.querySelector("input");
 const infoText = document.querySelector("p");
 const closeBtn = document.querySelector(".close");
 const copyBtn = document.querySelector(".copy");
 
-// DATABASE API
+// Fecth Data From Api
 
-function fetchRequest(file, formDate){
-    infoText.innerText = "Scaneie o QR Code..."
-    fetch("https://api.qrserver.com/v1/read-qr-code/", {
-        method: 'POST', body: formDate
+function fetchRequest(file, formData) {
+    infoText.innerText = "Scanning QR Code...";
+    fetch("http://api.qrserver.com/v1/read-qr-code/", {
+        method: 'POST', body: formData
     }).then(res => res.json()).then(result => {
-        result =result[0].symbol[0].data;
-        infoText.innerText = result ? "Enviar o QR Code Para Ler" : "Não foi Possivel ler o QR Code";
-        if(!result) return;
+        result = result[0].symbol[0].data;
+        infoText.innerText = result ? "Upload QR Code To Scan" : "Couldn't Scan QR Code";
+        if (!result) return;
         document.querySelector("textarea").innerText = result;
         form.querySelector("img").src = URL.createObjectURL(file);
         wrapper.classList.add("active");
     }).catch(() => {
-        infoText.innerText = "Não foi Possivel ler o QR Code..."
-    })
+        infoText.innerText = "Couldn't Scan QR Code...";
+    });
 }
 
-// Enviar QR CODE PARA A API
-fileInp.addEventListener("mudar", async e => {
+// Send QR Code File With Request To Api
+fileInp.addEventListener("change", async e => {
     let file = e.target.files[0];
-    if(!file) return;
-    let formDate = new formDate();
-    formDate.append('file', file);
-    fetchRequest(file, formDate);
+    if (!file) return;
+    let formData = new FormData();
+    formData.append('file', file);
+    fetchRequest(file, formData);
 });
 
-//Copiar o text
-copyBtn.addEventListener("click", () =>{
-    let text = document.querySelector("textarea").
-    textContent;
-    navigator.clipboard.writeText(text)
-})
+// Copy Text To Clipboard
+copyBtn.addEventListener("click", () => {
+    let text = document.querySelector("textarea").textContent;
+    navigator.clipboard.writeText(text);
+});
 
-// Quando o usario clicar no formulario do fileInp função do EventListener
+// When user click on form do fileInp Evenetlistener function
 form.addEventListener("click", () => fileInp.click());
 
 closeBtn.addEventListener("click", () => wrapper.classList.remove("active"));

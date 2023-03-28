@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-* {
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+body{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,21 +16,21 @@ body {
     background: #06283d;
 }
 
-.wrapper {
+.wrapper{
     height: 270px;
     width: 420px;
-    background: #334155;
+    background-color: #334155;
     border-radius: 7px;
     padding: 30px 30px 35px;
     transition: all 0.2s ease;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.wrapper.active {
+.wrapper.active{
     height: 525px;
 }
 
-.wrapper form {
+.wrapper form{
     height: 210px;
     display: flex;
     cursor: pointer;
@@ -40,51 +40,51 @@ body {
     background: #fff;
     align-items: center;
     justify-content: center;
-    transition: all 0.2 ease;
+    transition: all 0.2s ease;
 }
 
-.wrapper.active form {
-    height: 225;
+.wrapper.active form{
+    height: 225px;
     pointer-events: none;
 }
 
-form img {
+form img{
     display: none;
     max-width: 148px;
 }
 
-.wrapper.active form img {
+.wrapper.active form img{
     display: block;
 }
 
-.wrapper.active form .content {
+.wrapper.active form .content{
     display: none;
 }
 
-form .content i {
+form .content i{
     color: #334155;
     font-size: 55px;
 }
 
-fotm .content p {
+form .content p{
     color: #334155;
     margin-top: 15px;
     font-size: 16px;
 }
 
-.wrapper .details {
+.wrapper .details{
     opacity: 0;
     margin-top: 25px;
     pointer-events: none;
 }
 
-.wrapper.active .details {
+.wrapper.active .details{
     opacity: 1;
     pointer-events: auto;
-    transition: opopacity 0.5s 0.05s ease;
+    transition: opacity 0.5s 0.05s ease;
 }
 
-.details textarea {
+.details textarea{
     width: 100%;
     height: 128px;
     outline: none;
@@ -97,32 +97,31 @@ fotm .content p {
     border: 1px solid #fff;
 }
 
-textarea::-webkit-scrollbar {
+textarea::-webkit-scrollbar{
     width: 0px;
 }
 
-textarea:hover::-webkit-scrollbar {
+textarea:hover::-webkit-scrollbar{
     width: 5px;
 }
 
-textarea:hover::-webkit-scrollbar-track {
+textarea:hover::-webkit-scrollbar-track{
     background: none;
-    ;
 }
 
-textarea:hover::-webkit-scrollbar-thumb {
+textarea:hover::-webkit-scrollbar-thumb{
     background: #fff;
     border-radius: 8px;
 }
 
-.details .buttons {
+.details .buttons{
     display: flex;
     margin-top: 20px;
     align-items: center;
     justify-content: space-between;
 }
 
-.buttons button {
+.buttons button{
     height: 55px;
     outline: none;
     border: none;
@@ -136,7 +135,7 @@ textarea:hover::-webkit-scrollbar-thumb {
     width: calc(100% / 2 - 10px);
 }
 
-.buttons button:active {
+.buttons button:active{
     transform: scale(0.95);
 }
 
@@ -145,7 +144,7 @@ textarea:hover::-webkit-scrollbar-thumb {
         padding: 25px;
         height: 260px;
     }
-    .wrapper.active {
+    .wrapper.active{
         height: 520px;
     }
 }
