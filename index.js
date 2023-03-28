@@ -8,18 +8,18 @@ const copyBtn = document.querySelector(".copy");
 // Fecth Data From Api
 
 function fetchRequest(file, formData) {
-    infoText.innerText = "Scanning QR Code...";
+    infoText.innerText = "Scaneie o QR Code ...";
     fetch("http://api.qrserver.com/v1/read-qr-code/", {
         method: 'POST', body: formData
     }).then(res => res.json()).then(result => {
         result = result[0].symbol[0].data;
-        infoText.innerText = result ? "Upload QR Code To Scan" : "Couldn't Scan QR Code";
+        infoText.innerText = result ? "Envie o QR Code" : "Não foi possivel ler o QR Code";
         if (!result) return;
         document.querySelector("textarea").innerText = result;
         form.querySelector("img").src = URL.createObjectURL(file);
         wrapper.classList.add("active");
     }).catch(() => {
-        infoText.innerText = "Couldn't Scan QR Code...";
+        infoText.innerText = "Não foi possivel ler o QR Code...";
     });
 }
 
